@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/weichenglee/Documents/GitHub/BuySphere/MyWebApi/MyWebApi.csproj": {}
+    "/Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/MyWebApi.csproj": {}
   },
   "projects": {
-    "/Users/weichenglee/Documents/GitHub/BuySphere/MyWebApi/MyWebApi.csproj": {
+    "/Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/MyWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/weichenglee/Documents/GitHub/BuySphere/MyWebApi/MyWebApi.csproj",
+        "projectUniqueName": "/Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/MyWebApi.csproj",
         "projectName": "MyWebApi",
-        "projectPath": "/Users/weichenglee/Documents/GitHub/BuySphere/MyWebApi/MyWebApi.csproj",
+        "projectPath": "/Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/MyWebApi.csproj",
         "packagesPath": "/Users/weichenglee/.nuget/packages/",
-        "outputPath": "/Users/weichenglee/Documents/GitHub/BuySphere/MyWebApi/obj/",
+        "outputPath": "/Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/weichenglee/.nuget/NuGet/NuGet.Config"
