@@ -6,9 +6,9 @@ import { Product } from "../../types/Product";
 import Link from "next/link";
 
 export default function CartPage() {
-  const { cart, removeFromCart } = useCart(); 
+  const { cart, removeFromCart } = useCart();
 
-
+  // Calculate total price
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
   };
@@ -62,6 +62,15 @@ export default function CartPage() {
           </ul>
           <div style={{ marginTop: "20px", fontSize: "18px" }}>
             <strong>Total Price: </strong>${calculateTotalPrice()}
+          </div>
+
+          {/* Checkout Button */}
+          <div style={{ marginTop: "20px", textAlign: "right" }}>
+            <Link href="/checkout">
+              <button className="mybutton">
+                Proceed to Checkout
+              </button>
+            </Link>
           </div>
         </div>
       )}
