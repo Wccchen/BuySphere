@@ -1,19 +1,14 @@
 "use client";
 
 import React from "react";
-import useCart from "../context/useCart";
+import { useCart } from "../cart/CartContext";
 import { Product } from "../../types/Product";
+import Link from "next/link";
 
 export default function CartPage() {
-  const { cart, setCart } = useCart();
+  const { cart, removeFromCart } = useCart(); 
 
-  // Remove item from cart
-  const removeFromCart = (productId: number) => {
-    const updatedCart = cart.filter((item: Product) => item.id !== productId);
-    setCart(updatedCart); // Update the cart
-  };
 
-  // Calculate total price
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
   };
@@ -22,7 +17,14 @@ export default function CartPage() {
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h1>Your Shopping Cart</h1>
       {cart.length === 0 ? (
-        <p>Your cart is empty. Go to <a href="/products">Products</a> to add items!</p>
+        // Show the message when the cart is empty
+        <p>
+          Your cart is empty. Go to{" "}
+          <Link href="/products" className="mybutton">
+            Products
+          </Link>{" "}
+          to add items!
+        </p>
       ) : (
         <div>
           <ul style={{ listStyleType: "none", padding: 0 }}>
@@ -38,27 +40,18 @@ export default function CartPage() {
                   borderRadius: "5px",
                 }}
               >
-                
                 <img
                   src={product.image}
                   alt={product.title}
                   style={{ width: "100px", height: "100px", marginRight: "20px" }}
                 />
-                
                 <div style={{ flex: 1 }}>
                   <h2 style={{ margin: "0 0 10px 0" }}>{product.title}</h2>
                   <p style={{ margin: "0 0 5px 0" }}>
                     <strong>Price:</strong> ${product.price}
                   </p>
                   <button
-                    style={{
-                      backgroundColor: "#ff4d4d",
-                      color: "#fff",
-                      padding: "10px 20px",
-                      border: "none",
-                      borderRadius: "5px",
-                      cursor: "pointer",
-                    }}
+                    className="mybutton"
                     onClick={() => removeFromCart(product.id)}
                   >
                     Remove
