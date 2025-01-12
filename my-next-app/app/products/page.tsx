@@ -1,6 +1,7 @@
+"use client";
 import React from "react";
 import { Product } from "../../types/Product"; 
-
+import  useCart  from "../context/useCart";
 // Define mockProducts
 const mockProducts: Product[] = [
     {
@@ -42,6 +43,8 @@ const mockProducts: Product[] = [
 ];
 
 export default function ProductsPage() {
+    const { cart, addToCart } = useCart();
+
     return (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
             {/* Title */}
@@ -71,6 +74,9 @@ export default function ProductsPage() {
                             <p style={{ margin: "0 0 5px 0" }}>
                                 <strong>Price:</strong> ${product.price}
                             </p>
+                            <button className="mybutton" onClick={() => addToCart(product)}>
+                              Add to Cart
+                            </button>
                             <p style={{ margin: "0 0 5px 0" }}>
                                 <strong>Category:</strong> {product.category}
                             </p>
@@ -79,6 +85,16 @@ export default function ProductsPage() {
                                 <strong>Rating:</strong> {product.rating.rate} / 5 ({product.rating.count} reviews)
                             </p>
                         </div>
+                    </li>
+                ))}
+            </ul>
+
+            {/* Cart */}
+            <h1>Shopping Cart</h1>
+            <ul>
+                {cart.map((item) => (
+                    <li key={item.id}>
+                        {item.title} - ${item.price}
                     </li>
                 ))}
             </ul>
