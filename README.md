@@ -187,12 +187,12 @@ version: "3.9"
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./my-next-app
     ports:
       - "3000:3000"
   backend:
     build:
-      context: ./backend
+      context: ./MyWebApi
     ports:
       - "7170:7170"
   redis:
