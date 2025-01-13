@@ -158,25 +158,25 @@ A `Dockerfile` and `docker-compose.yml` to containerize the frontend, backend, a
 ```dockerfile
 # Frontend: Next.js
 FROM node:16 AS frontend
-WORKDIR /app/frontend
-COPY frontend/package*.json ./
+WORKDIR /BuySphere/my-next-app
+COPY my-next-app/package*.json ./
 RUN npm install
-COPY frontend/ .
+COPY my-next-app/ .
 RUN npm run build
 
 # Backend: ASP.NET Core
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS backend
-WORKDIR /app/backend
-COPY backend/*.csproj ./
+WORKDIR /BuySphere/MyWebApi
+COPY MyWebApi/*.csproj ./
 RUN dotnet restore
-COPY backend/ .
+COPY MyWebApi/ .
 RUN dotnet build -c Release -o out
 
 # Combine Frontend and Backend
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=frontend /app/frontend/out ./frontend
-COPY --from=backend /app/backend/out .
+COPY --from=frontend /BuySphere/my-next-app/out ./my-next-app
+COPY --from=backend /BuySphere/MyWebApi/out .
 EXPOSE 3000 7170
 CMD ["dotnet", "backend.dll"]
 ```
@@ -268,20 +268,20 @@ public class CacheController : ControllerBase {
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/Buysphere.git
-   cd mvp-project
+   git clone https://github.com/your-repo/BuySphere.git
+   cd BuySphere
    ```
 
 2. **Frontend**:
    ```bash
-   cd frontend
+   cd my-next-app
    npm install
    npm run dev
    ```
 
 3. **Backend**:
    ```bash
-   cd backend
+   cd MyWebApi
    dotnet restore
    dotnet run
    ```
