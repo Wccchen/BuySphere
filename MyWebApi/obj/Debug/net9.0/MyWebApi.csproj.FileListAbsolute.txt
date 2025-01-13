@@ -34,3 +34,6 @@
 /Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/obj/Debug/net9.0/MyWebApi.pdb
 /Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/obj/Debug/net9.0/MyWebApi.genruntimeconfig.cache
 /Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/obj/Debug/net9.0/ref/MyWebApi.dll
+/Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/weichenglee/Document/GitHub/BuySphere/MyWebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll

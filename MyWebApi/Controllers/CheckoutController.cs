@@ -5,7 +5,7 @@ using System.Text.Json;
 namespace MyWebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/checkout")]
     public class CheckoutController : ControllerBase
     {
         private readonly IDatabase _redisDatabase;
@@ -61,8 +61,8 @@ namespace MyWebApi.Controllers
     // Checkout Request model
     public class CheckoutRequest
     {
-        public string CartId { get; set; }  = string.Empty; // Unique cart identifier
-        public decimal TotalPrice { get; set; }
+        public String CartId { get; set; }  = string.Empty; // Unique cart identifier
+        public int TotalPrice { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();
     }
 
