@@ -36,10 +36,66 @@ This project is a web application designed as a Minimum Viable Product (MVP) to 
   - Store session data, cache API responses, and manage real-time data requirements.
 
 ---
+### 5.  **Jira Notes for BuySphere Project**
 
-## Examples
+## Overview
+The BuySphere project utilizes Jira to manage development tasks efficiently. The key components of the project board include tasks, their statuses, and priorities.
 
-### 1. Server-Side Rendering (SSR)
+---
+
+## Sprint Board Overview
+### Image:
+![Sprint Board](./IMG_3760.PNG)
+
+### Description:
+The Jira Sprint Board is divided into three main columns:
+1. **To Do**:
+   - Represents tasks that are planned but have not yet been started.
+   - Examples: "Search Products", "Responsive Website Design", and "Manage Products".
+   
+2. **In Progress**:
+   - Shows tasks that are currently being developed or tested.
+   - Examples: "Checkout", "Save Cart to Redis", and "Docker Deployment".
+
+3. **Done**:
+   - Lists tasks that have been completed and are ready for review or release.
+   - Examples: "View Products", "Add to Cart", and "View Shopping Cart".
+
+Each task includes details such as:
+- **Assignee**: The person responsible for the task.
+- **Story Points**: The estimated effort required to complete the task.
+- **Priority**: Indicates the importance of the task (e.g., Highest).
+
+---
+
+## Task Detail Example
+### Image:
+![Task Detail - View Products](./IMG_3761.PNG)
+
+### Description:
+This is an example of a task detail view in Jira:
+
+- **Task Name**: View Products
+- **Description**:
+  - As a user, I would like to browse a list of products on the website.
+  - So I can view details about available items before purchasing.
+- **Priority**: Highest
+- **Story Points**: 3
+- **Status**: Done
+- **Parent Issue**: Implement basic features for the E-Commerce Website
+- **Sprint**: BuySphere Sprint 1
+- **Assignee**: Wayne Lee
+
+This detailed view provides all the necessary information for task tracking and status updates.
+
+---
+
+## Conclusion
+Jira is an essential tool for managing tasks in the BuySphere project. It helps organize, prioritize, and monitor the progress of tasks across different stages of the sprint. This structured approach ensures a smooth workflow and successful project delivery.
+
+## Other tools Examples
+
+### 1. Server-Side Rendering (SSR) (plan to add)
 This example demonstrates fetching product data dynamically on the server for every request.
 
 ```javascript
@@ -66,7 +122,7 @@ export default ProductPage;
 
 ---
 
-### 2. Static Site Generation (SSG)
+### 2. Static Site Generation (SSG) (plan to add)
 This example demonstrates pre-rendering product data at build time with incremental updates.
 
 ```javascript
@@ -95,7 +151,7 @@ export default ProductsPage;
 
 ---
 
-### 3. Docker Example
+### 3. Docker Example 
 A `Dockerfile` and `docker-compose.yml` to containerize the frontend, backend, and Redis.
 
 #### Dockerfile
@@ -121,7 +177,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=frontend /app/frontend/out ./frontend
 COPY --from=backend /app/backend/out .
-EXPOSE 3000 5000
+EXPOSE 3000 7170
 CMD ["dotnet", "backend.dll"]
 ```
 
@@ -138,7 +194,7 @@ services:
     build:
       context: ./backend
     ports:
-      - "5000:5000"
+      - "7170:7170"
   redis:
     image: redis:latest
     ports:
@@ -148,7 +204,7 @@ services:
 ---
 
 ### 4. Redis Example
-This example demonstrates how to integrate Redis in an ASP.NET Core backend.
+This example demonstrates how to integrate Redis in an ASP.NET Core backend, MyWebApi/Services/RedisCartService.cs
 
 #### Redis Service
 ```csharp
@@ -212,7 +268,7 @@ public class CacheController : ControllerBase {
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/mvp-project.git
+   git clone https://github.com/your-repo/Buysphere.git
    cd mvp-project
    ```
 
