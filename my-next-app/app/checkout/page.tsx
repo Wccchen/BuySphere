@@ -1,10 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "../cart/CartContext";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useCart();
+  const [cartId, setCartId] = useState("");
+
+  // Initialise uniquecartId
+  useEffect(() => {
+    const storedCartId = localStorage.getItem("cartId");
+    if (storedCartId) {
+      setCartId(storedCartId); 
+    } else {
+      const newCartId = uuidv4(); // Generate cartId
+      localStorage.setItem("cartId", newCartId);
+      setCartId(newCartId);
+    }
+  }, []);
 
   const handleCheckout = async () => {
     if (cart.length === 0) {
@@ -14,29 +28,34 @@ export default function CheckoutPage() {
 
     const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
 
+    
+    const checkoutData = {
+      cartId: cartId, // unique cartId
+      products: cart.map((item) => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+      })),
+      totalPrice: totalAmount,
+    };
+
+    console.log("Sending checkout data:", JSON.stringify(checkoutData, null, 2));
+
     try {
-     
       const response = await fetch("https://localhost:7170/api/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          cartId:"unique-cart-id",  
-          products: cart.map((item) => ({
-            id: item.id,
-            title: item.title,
-            price: item.price,
-          })),
-          totalPrice: totalAmount,
-        }),
+        body: JSON.stringify(checkoutData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        alert(`Checkout successful! Order ID: ${data.orderId}`);
+        alert(`Checkout successful! Cart ID: ${data.cartId}`);
         clearCart();
+        localStorage.removeItem("cartId"); //remove cartId
       } else {
         alert(`Checkout failed: ${data.message}`);
       }
